@@ -4,7 +4,7 @@ export default function EventCard({ event }) {
             <div className="flex gap-4 ">
                 <span className="flex-col">
                     {/* <p>{event.thumbnail}</p> */}
-                    <p className="h-24 w-32 h-full bg-gray-200"></p>
+                    <p className="h-24 w-32  bg-gray-200"></p>
                 </span>
                 <span className="flex-col flex gap-1 py-1">
                     <p className="text-sm">{event.startDateTime} - {event.endDateTime} </p>
