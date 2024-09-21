@@ -10,7 +10,7 @@ export default function Navbar() {
 
   return (
     <nav className="bg-primary text-white shadow">
-      <div className=" mx-auto px-6">
+      <div className=" mx-auto px-7">
         <div className="flex justify-start">
           <div className="flex me-auto gap-6">
             <div>
