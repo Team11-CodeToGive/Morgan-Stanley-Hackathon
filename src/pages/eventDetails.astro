@@ -1,0 +1,195 @@
+---
+import {Image} from 'astro:assets';
+
+let hostName = "Karan Swansi";
+let eventName = "Financial Workshop Open House";
+let eventLocation = "3726 E Main St, College Park, GA 30337";
+let recurringInfo = {
+    text: "Every week on Saturday",
+    until: ""
+}
+let attendees = [
+    {name: "Rodney Edge Sr.", role: "Organizer"},
+    {name: "Laura Loughin", role: "Organizer"},
+    {name: "Karan Swansi", role: "organizer"}
+]
+
+let carpoolers = [
+    {name: "Samantha A."},
+    {name: "Robert D."},
+    {name: "Luisana B."},
+    {name: "Emilia R."},
+    {name: "Jonathan A."},
+    {name: "Karan S."},
+    {name: "Marciano G."},
+    {name: "Cormac B."}
+]
+
+let meetingTimes = [
+    {day: "Saturday", date: "September 21, 2024", time: "5:00pm - 6:00pm", until: "October 6, 2024"},
+    {day: "Saturday", date: "September 21, 2024", time: "5:00pm - 6:00pm", until: "October 6, 2024"},
+    {day: "Saturday", date: "September 21, 2024", time: "5:00pm - 6:00pm", until: "October 6, 2024"}
+];
+let relatedEvents = [
+    {
+        name: "Motel to Home Resources",
+        description: "Learn about the programs we offer and see if you are eligible today!",
+    },
+    {
+        name: "Volunteering Opportunities",
+        description: "Participate in our fundraising events to support families and individuals thrive",
+    },
+    {
+        name: "Volunteering Opportunities",
+        description: "Participate in our fundraising events to support families and individuals thrive",
+    }
+]
+
+let comments = [
+    {name: "John Doberman", date: "Mar 12 2020", comment:"Great event! Felt supported and safe"},
+    {name: "Robert D.", date: "Mar 12 2020", comment:"I will recommend CRP to all my friends and family. You are changing lives thank you"},
+    {name: "Rodney Edge", date: "Mar 12 2020", comment:"It was amazing I got to meet new folks and I love the car sharing feature!"},
+    {name: "Karan Swansi", date: "Mar 12 2020", comment:"I feel blessed to be part of CRP. Highly recommend coming to our open houses if you haven’t come yet."},
+]
+---
+
+<html class="h-full bg-white">
+<head>
+</head>
+
+<body>
+
+    <main class="flex flex-col items-center h-full pt-5">
+        <div class="grid grid-cols-[_minmax(_0px,_2fr)_250px] w-full max-w-[1100px] px-8 gap-3">
+            <div class="flex flex-col gap-5">
+                <!-- Thumbnail & images -->
+                <img 
+                src="/placeHolderImages/coffeeClubPlaceHolder.jpg"
+                alt="descriptive text"
+                width="100%"
+                height="150"
+                class="object-cover "
+                />
+                
+                <!-- event name and host -->
+                <header class="pt-5"> 
+                    <h1 class="text-3xl font-semibold text-gray-700">{eventName}</h1>
+                </header>
+
+                <!-- Meeting Dates. Should probably turn each element into a small component-->
+                <section class="flex w-full gap-2">
+                    {
+                        meetingTimes.map((meetingTime) => 
+                        <p class="bg-gray-100 w-fit px-6 py-2 rounded-lg text-sm text-purple-500 font-semibold">
+                            SEP 21 @5PM
+                        </p>
+                        )
+                    }
+                </section>
+
+                <!-- Details -->
+                <section>
+                    <h2 class="font-semibold text-xl w-full text-gray-700"> Details</h2>
+                    <p class="text-sm text-gray-400">
+                        Here's a closer look of our recent open house for our new office space 
+                        at College Park First United Methodist Church where we conduct our 
+                        financial workshops, meetings and provide resources to help underserved 
+                        communities. Join us on our journey to continue helping families thrive!
+                    </p>
+                </section>
+
+                <!-- Attendees -->
+                <section >
+                    <h2 class="font-semibold text-xl mb-5 text-gray-700"> Attendees (11)</h2>
+                    <div class="flex gap-2">
+                        {
+                            attendees.map((attendee) => 
+                            <div class="flex w-fit pl-2 pr-8 py-2 gap-1 rounded-full shadow-sm bg-white">
+                                <div class="w-14 h-14 rounded-full bg-black"></div>
+                                <div class="flex flex-col text-sm">
+                                    <p class="font-semibold text-gray-400">{attendee.name}</p>
+                                    <p class="text-gray-400">{attendee.role}</p>
+                                </div>
+                            </div>
+                            )
+                        }
+                    </div>
+                </section>
+
+                <!-- Contact Organizers -->
+                <button class="bg-orange-400 w-fit px-5 py-3 rounded-full text-white text-sm"> Contact organizers</button>
+
+                <!-- Need A ride -->
+                <section>
+                    <h2 class="font-semibold text-xl pb-3 text-gray-700"> Need a ride? Contact who's carpooling</h2>
+                    <div class="flex flex-wrap gap-5 content-center">
+                        {
+                            carpoolers.map((carpooler) => 
+                                <div class="flex gap-3 items-center">
+                                    <div class="w-5 h-5 rounded-full bg-black"></div>
+                                    <p>{carpooler.name}</p>
+                                </div>
+                            )
+                        }
+                    </div>
+                </section>
+                
+
+                <!-- People are also interested in -->
+                <section>
+                    <h2 class="font-semibold text-xl pb-3 text-gray-700">People are also interested in</h2>
+                    <div class="flex gap-5">
+                        {
+                            relatedEvents.map((relatedEvent) =>
+                                <div class="flex flex-col">
+                                    <div class="w-60 h-60 bg-black mb-3 rounded-lg shadow-md"> </div>
+                                    <p class="font-semibold text-gray-700">{relatedEvent.name}</p>
+                                    <p class="text-sm text-gray-500">{relatedEvent.description}</p>
+                                    <button class="w-32 mt-3 py-2 px-3 rounded-full text-white bg-[#B7C9D3] "> Learn More </button>
+                                </div>
+                            )
+                        }
+                    </div>
+                </section>
+
+                <!-- Comment Section -->
+                <section>
+                    <h2 class="font-semibold text-xl mb-5 text-gray-700"> What is our community Saying? </h2>
+                    <div class="flex flex-col gap-11 w-full">
+                        {
+                            comments.map((comment) => 
+                                <div>
+                                    <div class="flex gap-6">
+                                        <div class="w-14 h-14 rounded-full bg-black"></div>
+                                        <div >
+                                            <h4 class=""> {comment.name}</h4>
+                                            <p class="text-gray-500 text-sm"> {comment.date}</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-500 text-sm mt-2"> {comment.comment}</p>
+                                </div>
+                            )
+                        }
+                    </div>
+                </section>
+            </div> 
+            <div class="flex flex-col items-center gap-3">
+                <!-- add to calendar -->
+                <article class="w-full bg-white rounded-md p-5 shadow-md">
+                    <h2 class="font-semibold text-xl text-gray-700"> {eventName} </h2>
+                    <hr class="my-2"/>
+                    <p class="text-sm text-gray-400">{meetingTimes[0].day}, {meetingTimes[0].date}</p>
+                    <p class="text-sm text-gray-400">{meetingTimes[0].time}</p>
+                    <p class="text-sm text-gray-400">{eventLocation}</p>
+                    <button class="w-full py-3 mt-4 text-sm rounded-full text-white bg-purple-500"> Add to Calendar </button>
+                </article>
+            </div>
+        </div>
+
+
+        <footer>
+
+        </footer>
+    </main>
+</body>
+</html>
