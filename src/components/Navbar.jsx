@@ -10,11 +10,11 @@ export default function Navbar() {
 
   return (
     <nav className="bg-primary text-white shadow">
-      <div className=" mx-auto px-6">
+      <div className=" mx-auto px-8">
         <div className="flex justify-start">
           <div className="flex me-auto gap-6">
             <div>
-             <a href="#" className="flex items-center bg-white px-3 py-1 m-1 rounded">
+             <a href="#" className="flex items-center bg-white px-10 py-1 my-3 rounded-sm ">
                 <span className="font-semibold text-lg"><img src="/logo.png" alt="Community Restoration Project" className="" /></span>
               </a>
             </div>

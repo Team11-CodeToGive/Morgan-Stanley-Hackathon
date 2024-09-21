@@ -8,7 +8,8 @@ interface Props {
 }
 const { title } = Astro.props;
 
-import Navbar from "../components/Navbar.jsx";
+import Navbar from "@/components/Navbar.jsx";
+import Footer from "@/components/Footer.astro";
 ---
 
 <!doctype html>
@@ -24,6 +25,9 @@ import Navbar from "../components/Navbar.jsx";
 	</head>
 	<body>
 		<Navbar client:only/>
-		<slot />
+		<div class="py-4 sm:py-6">
+			<slot />
+		</div>
+		<Footer />
 	</body>
 </html>
