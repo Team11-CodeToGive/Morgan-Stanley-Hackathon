@@ -1,6 +1,11 @@
 ---
 import {Image} from 'astro:assets';
 
+
+// Make it so that profile pictures at least include initials
+// add 
+
+
 let hostName = "Karan Swansi";
 let eventName = "Financial Workshop Open House";
 let eventLocation = "3726 E Main St, College Park, GA 30337";
@@ -24,7 +29,6 @@ let carpoolers = [
     {name: "Marciano G."},
     {name: "Cormac B."}
 ]
-
 let meetingTimes = [
     {day: "Saturday", date: "September 21, 2024", time: "5:00pm - 6:00pm", until: "October 6, 2024"},
     {day: "Saturday", date: "September 21, 2024", time: "5:00pm - 6:00pm", until: "October 6, 2024"},
@@ -173,17 +177,6 @@ let comments = [
                     </div>
                 </section>
             </div> 
-            <div class="flex flex-col items-center gap-3">
-                <!-- add to calendar -->
-                <article class="w-full bg-white rounded-md p-5 shadow-md">
-                    <h2 class="font-semibold text-xl text-gray-700"> {eventName} </h2>
-                    <hr class="my-2"/>
-                    <p class="text-sm text-gray-400">{meetingTimes[0].day}, {meetingTimes[0].date}</p>
-                    <p class="text-sm text-gray-400">{meetingTimes[0].time}</p>
-                    <p class="text-sm text-gray-400">{eventLocation}</p>
-                    <button class="w-full py-3 mt-4 text-sm rounded-full text-white bg-purple-500"> Add to Calendar </button>
-                </article>
-            </div>
         </div>
 
 
