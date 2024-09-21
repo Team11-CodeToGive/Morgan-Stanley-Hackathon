@@ -23,6 +23,13 @@ export default {
 
 					// title text color
 					700: '#484848',
+				},
+				orange: {
+					// original orange
+					500: "#F5941D"
+				},
+				blue: {
+					200: '#B7C9D3'
 				}
 			}
 		},

@@ -107,7 +107,7 @@ let comments = [
                             <div class="flex w-fit pl-2 pr-8 py-2 gap-1 rounded-full shadow-sm bg-white">
                                 <div class="w-14 h-14 rounded-full bg-black"></div>
                                 <div class="flex flex-col text-sm">
-                                    <p class="font-semibold text-gray-400">{attendee.name}</p>
+                                    <p class="font-semibold text-gray-700">{attendee.name}</p>
                                     <p class="text-gray-400">{attendee.role}</p>
                                 </div>
                             </div>
@@ -127,7 +127,7 @@ let comments = [
                             carpoolers.map((carpooler) => 
                                 <div class="flex gap-3 items-center">
                                     <div class="w-5 h-5 rounded-full bg-black"></div>
-                                    <p>{carpooler.name}</p>
+                                    <p class="text-gray-700">{carpooler.name}</p>
                                 </div>
                             )
                         }
