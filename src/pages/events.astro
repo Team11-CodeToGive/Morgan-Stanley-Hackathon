@@ -1,0 +1,51 @@
+---
+import Layout from "../layouts/Layout.astro";
+import EventTimeline from "../components/EventTimeline";
+
+const events = [
+	{
+		thumbnail: "https://example.com/event1-thumbnail.jpg",
+		title: "Tech Conference 2024",
+		startDateTime: "2024-10-12T09:00:00",
+		endDateTime: "2024-10-12T17:00:00",
+		location: "San Francisco, CA",
+		attendees: ["John Doe", "Jane Smith", "Michael Brown"]
+	},
+	{
+		thumbnail: "https://example.com/event2-thumbnail.jpg",
+		title: "Art Expo",
+		startDateTime: "2024-11-05T10:00:00",
+		endDateTime: "2024-11-05T18:00:00",
+		location: "New York, NY",
+		attendees: ["Emily White", "Liam Johnson"]
+	},
+	{
+		thumbnail: "https://example.com/event3-thumbnail.jpg",
+		title: "Startup Pitch Night",
+		startDateTime: "2024-12-15T18:00:00",
+		endDateTime: "2024-12-15T21:00:00",
+		location: "Austin, TX",
+		attendees: []
+	},
+	{
+		thumbnail: "https://example.com/event4-thumbnail.jpg",
+		title: "Charity Run 2024",
+		startDateTime: "2024-09-20T07:00:00",
+		endDateTime: "2024-09-20T12:00:00",
+		location: "Los Angeles, CA",
+		attendees: [
+			"David Clark",
+			"Sophia Martinez",
+			"Olivia Garcia",
+			"James Wilson"
+		]
+	}
+];
+---
+
+<Layout title="Events">
+	<main class="py-5">
+		<h1 class=" text-center text-lg pb-5">Events</h1>
+		<EventTimeline events={events} />
+	</main>
+</Layout>
