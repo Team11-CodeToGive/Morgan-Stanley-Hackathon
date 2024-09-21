@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+import EventTimeline from "../components/EventTimeline";
+import { useState } from "react";
+
+const events = [
+    {
+        title: "Event 1",
+        date: "2022-01-01",
+        description: "This is the first event.",
+    },
+    {
+        title: "Event 2",
+        date: "2022-02-01",
+        description: "This is the second event.",
+    },
+    {
+        title: "Event 3",
+        date: "2022-03-01",
+        description: "This is the third event.",
+    },
+];
+
+---
+
+<Layout title="Events">
+	<main>
+		<h1 class="">Events</h1>
+		<EventTimeline events={events} />
+	</main>
+</Layout>
