@@ -30,6 +30,11 @@ export default {
     				'200': '#B7C9D3'
     			}
     		},
+			boxShadow: {
+				'sm': '0px 0px 2px 2px rgb(0 0 0 / 0.05)',
+				'md': '0px 0px 2px 2px rgb(0 0 0 / 0.05)',
+
+			}
     	}
     },
 	plugins: [require("tailwindcss-animate")],
