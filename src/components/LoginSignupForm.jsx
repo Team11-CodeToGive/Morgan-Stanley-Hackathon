@@ -10,7 +10,7 @@ const Alert = ({ variant = 'info', children }) => {
 
   useEffect(() => {
     if (error && ref.current) {
-     ref.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      ref.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   }, [error]);
 
@@ -104,12 +104,16 @@ const LoginSignupForm = () => {
       setSuccess(isLogin ? 'Logged in successfully!' : 'User created successfully!');
       console.log(isLogin ? 'Logged in:' : 'User created:', data);
 
-      if (isLogin){
+
+      if (isLogin) {
         Cookies.set('email', data.email, { expires: 7 });
         Cookies.set('password', data.password, { expires: 7 });
         Cookies.set('user', data.user, { expires: 7 });
         navigate('/events');
+      } else {
+        setIsLogin(true);
       }
+
     } catch (err) {
       setError(err.message);
     }
@@ -207,7 +211,7 @@ const LoginSignupForm = () => {
                       required
                       className="appearance-none block w-full pl-10 px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                       value={confirmPassword}
-                      onChange={(newValue)=> setConfirmPassword(newValue.target.value)}
+                      onChange={(newValue) => setConfirmPassword(newValue.target.value)}
                     />
                   </div>
                 </div>
