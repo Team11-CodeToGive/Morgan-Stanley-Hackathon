@@ -9,13 +9,13 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="bg-primary text-white shadow">
+    <nav className="bg-primary text-white shadow border-b border-purple-300 sm:rounded-b-lg rounded-b">
       <div className=" mx-auto px-8">
         <div className="flex justify-start">
           <div className="flex me-auto gap-6">
             <div>
-             <a href="#" className="flex items-center bg-white px-10 py-1 my-3 rounded-sm ">
-                <span className="font-semibold text-lg"><img src="/logo.png" alt="Community Restoration Project" className="" /></span>
+             <a href="#" className="flex items-center bg-white px-10 py-1 my-3 rounded ">
+                <span className="font-semibold text-lg"><img className="h-12" src="/logo.png" alt="Community Restoration Project" /></span>
               </a>
             </div>
             <div className="hidden lg:flex items-center gap-6  *:border-b-2 *:border-primary hover:*:border-white hover:*:text-bold">
@@ -65,7 +65,7 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-      <div className={`lg:hidden ${isOpen ? 'block' : 'hidden'} hover:*:bg-purple-400 px-6`}>
+      <div className={`lg:hidden ${isOpen ? 'block' : 'hidden'} hover:*:bg-purple-400 px-6 pb-8`}>
         <a href="/" className="block py-2 px-4 text-sm hover:bg-gray-200">Home</a>
         <a href="/events" className="block py-2 px-4 text-sm hover:bg-gray-200">Events</a>
         <a href="/community-hub" className="block py-2 px-4 text-sm hover:bg-gray-200">Community Hub</a>
