@@ -1,38 +1,66 @@
+---
+import { Facebook, Instagram } from "lucide-react";
+---
+
 <div>
-    <div class="py-20  px-8 bg-secondary rounded-lg mx-8">
-        <div class="md:grid grid-cols-5 flex flex-wrap gap-x-8 sm:gap-x-24 items-end justify-start h-full gap-y-8 text-gray-800">
-            <div class="w-full col-span-2">
-                <div class="flex flex-wrap gap-8">
-                    <img class="" src="/phil.png" alt="phil">
-                    <div >
-                        <p>Phil founded the Community Restoration Project because he believes that every family and individual in our community can succeed if a formula for success is present. As a seasoned social services executive, Phil most recently served as executive director of Georgia Works! </p>
-                    </div>
+	<div class="py-20 px-8 bg-secondary rounded-lg mx-8 overflow-hidden">
+		<div
+			class="md:grid grid-cols-5 flex flex-wrap gap-x-8 sm:gap-x-24 items-start justify-start h-full gap-y-8 text-gray-800"
+		>
+			<div class="w-full col-span-2">
+				<div class="flex flex-wrap gap-8">
+					<img class="" src="/phil.png" alt="phil" />
+					<div>
+						<p>
+							Phil founded the Community Restoration Project
+							because he believes that every family and individual
+							in our community can succeed if a formula for
+							success is present. As a seasoned social services
+							executive, Phil most recently served as executive
+							director of Georgia Works!
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="flex flex-col sm:gap-4 gap-2 hover:*:underline">
+				<h1 class="text-xl font-bold">Company</h1>
+				<a href="https://www.communityrestorationproject.org/about"
+					>About</a
+				>
+				<a href="https://www.communityrestorationproject.org/news"
+					>News</a
+				>
+				<a href="https://www.communityrestorationproject.org/our-team"
+					>Our Team</a
+				>
+			</div>
+
+			<div class="flex flex-col sm:gap-4 gap-2">
+				<h1 class="text-xl font-bold">Contact</h1>
+				<div>
+                    3726 East Main Street
+                    College Park, GA 30337
                 </div>
-            </div>
-            <div class="flex flex-col sm:gap-4 gap-2">
-                <h1 class=" text-xl font-bold">Company</h1>
-                <h6>About</h6>
-                <h6>Legal</h6>
-                <h6>Contact Us</h6>
-            </div>
-            <div class="flex flex-col sm:gap-4 gap-2">
-                <h1 class=" text-xl font-bold">Company</h1>
-                <h6>About</h6>
-                <h6>Legal</h6>
-                <h6>Contact Us</h6>
-            </div>
-             <div class="flex flex-col sm:gap-4 gap-2">
-                <h1 class=" text-xl font-bold">Company</h1>
-                <h6>About</h6>
-                <h6>Legal</h6>
-                <h6>Contact Us</h6>
-            </div>
-        </div>
-    </div>
-    <div class=" bg-white px-8 py-10 ">
-        <div class="max-w-5xl  mx-auto items-center flex">
-            <div class="me-auto"><img class="h-14" src="/logo.png" alt=""></div>
-            <div class=" text-gray-500">© 2024 Community Restoration Project </div>
-        </div>
-    </div>
+				<div>
+                    P.O. Box 211​
+                    Fairburn, GA 30213
+                </div>
+				<div>phunter@communityrestorationproject.org</div>
+			</div>
+			<div class="flex flex-col sm:gap-4 gap-4">
+				<h1 class="text-xl font-bold">Socials</h1>
+				<span class="flex gap-2">
+					<a class=" hover:bg-white hover:text-rose-400 bg-rose-400 text-white transition duration-100 rounded-full shadow p-2 outline-1 outline-gray-200" href=""><Instagram size={24} /></a>
+					<a class=" hover:bg-white  hover:text-blue-400 bg-blue-500 text-white transition duration-100 rounded-full shadow p-2 outline-1 outline-gray-200" href=""><Facebook size={24} /></a>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="bg-white px-8 py-10">
+	<div class="max-w-5xl mx-auto items-center flex">
+		<div class="me-auto"><img class="h-14" src="/logo.png" alt="" /></div>
+		<div class="text-gray-500">© 2024 Community Restoration Project</div>
+	</div>
 </div>

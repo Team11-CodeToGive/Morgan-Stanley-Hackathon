@@ -1,19 +1,6 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import LoginSignupForm from "@/components/LoginSignupForm";
+import { navigate } from "astro:transitions/client"
 
-
+navigate('/events')
 
 ---
-
-<Layout title="Community Restoration Project">
-	<main>
-		<!-- <h1 class="text-3xl font-bold text-center">
-			Community Restoration Project
-		</h1>
-		<p class="text-center text-lg">Join us in restoring our community!</p> -->
-		<div class=" rounded-lg mx-auto max-w-md">
-			<LoginSignupForm client:only/>
-		</div>
-	</main>
-</Layout>

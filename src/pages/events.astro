@@ -116,7 +116,7 @@ const testBoxes = Array(20).fill(null);
 			<div class="w-20 sm:w-60 hidden sm:grid gap-1">
 				{testBoxes.map((el)=>(<div class="bg-gray-200"></div>))}
 			</div>
-			<EventTimeline client:only days={days} />
+			<EventTimeline client:only="react" />
 		</div>
 	</main>
 </Layout>

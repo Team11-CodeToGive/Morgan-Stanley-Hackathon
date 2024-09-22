@@ -1,15 +1,30 @@
 ---
-interface Props {
-	title: string;
-}
-
-interface Props {
-	title: string;
-}
-const { title } = Astro.props;
-
 import Navbar from "@/components/Navbar.jsx";
 import Footer from "@/components/Footer.astro";
+import { ViewTransitions } from 'astro:transitions';
+
+
+interface Props {
+	title: string;
+}
+
+interface Props {
+	title: string;
+}
+
+const {cookies,redirect} = Astro;
+
+const { title,} = Astro.props;
+
+// const email = cookies.get("email") ?? null;
+// const password = cookies.get("password") ?? null;
+
+// console.log(email, password)
+
+// if (!email || !password) {
+// 	redirect('/')
+// }
+
 ---
 
 <!doctype html>
@@ -21,13 +36,21 @@ import Footer from "@/components/Footer.astro";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+		/>
 	</head>
 	<body>
-		<Navbar client:only/>
-		<div class="py-10 sm:py-10">
+		<span transition:persist>
+			<Navbar client:only="react"/>
+		</span>
+		<div class="py-10 sm:py-10" transition:animate="slide">
 			<slot />
 		</div>
-		<Footer />
+		<span transition:persist>
+			<Footer/>
+		</span>
 	</body>
 </html>
+<ViewTransitions />
