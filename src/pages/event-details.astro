@@ -92,7 +92,7 @@ let comments = [
                             <h1 class="text-3xl font-semibold text-gray-700">{eventName}</h1>
                             <p class="text-sm text-gray-400 mt-2">{eventLocation}</p>
                         </header>
-                        <!-- Meeting Dates. Should probably turn each element into a small component-->
+                        <!-- Meeting Dates -->
                         <section class="flex flex-wrap w-full gap-2">
                             {
                                 meetingTimes.map((meetingTime) =>
@@ -205,11 +205,16 @@ let comments = [
                 <div class="grid grid-cols-3 gap-5">
                     {
                         relatedEvents.map((relatedEvent) =>
-                            <div class="flex flex-col">
+                            <div class="flex flex-col rounded-lg relative
+                            duration-200 hover:shadow-[0_0_0_0.75rem_rgba(0_0_0_/_5%)] hover:bg-[rgb(0_0_0_/_5%)]
+                            focus-within:shadow-[0_0_0_0.75_rgba(0_0_0_/_5%)] focus-within:bg-[rgb(0_0_0_/_5%)]">
+
                                 <div class="w-full aspect-square bg-black mb-3 rounded-lg shadow-sm"> </div>
                                 <p class="font-semibold text-gray-700">{relatedEvent.name}</p>
                                 <p class="text-sm text-gray-400">{relatedEvent.description}</p>
-                                <button class="w-32 mt-3 py-2 px-3 rounded-full text-white bg-[#B7C9D3] "> Learn More </button>
+                                {/* I couldn't come up with this even if I tried. 
+                                It is the pseudo-content trick: https://inclusive-components.design/cards/ */}
+                                <a class="after:absolute after:inset-0 focus:outline-none" href="/events"></a>
                             </div>
                         )
                     }
@@ -217,7 +222,7 @@ let comments = [
             </section>
             <!-- Comment Section (top margin is in gap property of parent)-->
             <section class="max-w-[600px]">
-                <h2 class="font-semibold text-xl mb-10 text-gray-700"> What is our community Saying? </h2>
+                <h2 class="font-semibold text-xl mb-10 text-gray-700"> What is our Community Saying? </h2>
                 <div class="flex flex-col gap-11 w-full">
                     {
                         comments.map((comment) =>
