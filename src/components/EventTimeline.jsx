@@ -5,19 +5,16 @@ export default function EventTimeline({ days }) {
         <div className=" gap-4 grid w-full">
             {
                 days.map((day, key) =>
-                    <div className key={key}>
+                    <div key={key}>
                         <h2 className="text-2xl font-semibold pb-4">{day.date}</h2>
                         <div className="border-b border-1 border-gray-300 mb-4"></div>
                         <div className="gap-4 grid">
                             {day.events.map((event, key, { length }) => (
-                                <>
-                                    <EventCard key={key} event={event}></EventCard>
-                                    {key + 1 != length && <div className="border-b border-1 border-gray-100"></div>}
-                                </>
+                                <EventCard key={key} event={event}></EventCard>
                             ))}
                         </div>
                     </div>)
             }
         </div>
     )
-}
+} {/* {key + 1 != length && <div className="border-b border-1 border-gray-100"></div>} */ }

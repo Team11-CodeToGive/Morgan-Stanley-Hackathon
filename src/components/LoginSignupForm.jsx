@@ -1,8 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Mail, Lock, User, MapPin, Home, Building, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { error } from 'node_modules/astro/dist/core/logger/core';
+import Cookies from 'js-cookie';
+import { navigate } from 'astro:transitions/client';
 
 // Simple Alert component using Tailwind CSS and Lucide React icons
 const Alert = ({ variant = 'info', children }) => {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (error && ref.current) {
+     ref.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [error]);
+
   const colors = {
     info: 'bg-blue-100 text-blue-800',
     success: 'bg-green-100 text-green-800',
@@ -16,7 +27,7 @@ const Alert = ({ variant = 'info', children }) => {
   };
 
   return (
-    <div className={`p-4 mb-4 rounded-lg ${colors[variant]} flex items-center`} role="alert">
+    <div ref={ref} className={`p-4 mb-4 rounded-lg ${colors[variant]} flex items-center`} role="alert">
       {icons[variant]}
       <div className="font-medium">{children}</div>
     </div>
@@ -24,27 +35,6 @@ const Alert = ({ variant = 'info', children }) => {
 };
 
 const LoginSignupForm = () => {
-
-  const myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-
-  const raw = JSON.stringify({
-    "password": "Pranil@123",
-    "email": "ingle.pranil@gmail.com"
-  });
-
-  const requestOptions = {
-    method: "POST",
-    headers: myHeaders,
-    body: raw,
-    redirect: "follow"
-  };
-
-  fetch("https://PranilIngle.pythonanywhere.com/users/login", requestOptions)
-    .then((response) => response.text())
-    .then((result) => console.log(result))
-    .catch((error) => console.error(error));
-
 
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
@@ -55,11 +45,13 @@ const LoginSignupForm = () => {
     location: {
       zipcode: '',
       address: '',
+
       name: '',
     },
   });
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -81,6 +73,11 @@ const LoginSignupForm = () => {
     e.preventDefault();
     setError('');
     setSuccess('');
+
+    if (!isLogin && formData.password !== confirmPassword) {
+      setError('Passwords do not match');
+      return;
+    }
 
     const url = isLogin
       ? 'https://PranilIngle.pythonanywhere.com/users/login'
@@ -106,6 +103,13 @@ const LoginSignupForm = () => {
       const data = await response.json();
       setSuccess(isLogin ? 'Logged in successfully!' : 'User created successfully!');
       console.log(isLogin ? 'Logged in:' : 'User created:', data);
+
+      if (isLogin){
+        Cookies.set('email', data.email, { expires: 7 });
+        Cookies.set('password', data.password, { expires: 7 });
+        Cookies.set('user', data.user, { expires: 7 });
+        navigate('/events');
+      }
     } catch (err) {
       setError(err.message);
     }
@@ -188,6 +192,25 @@ const LoginSignupForm = () => {
 
             {!isLogin && (
               <>
+                <div>
+                  <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+                    Confirm Password
+                  </label>
+                  <div className="mt-1 relative rounded-md ">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <Lock className="h-5 w-5 text-gray-400" />
+                    </div>
+                    <input
+                      id="confirmPassword"
+                      name="confirmPassword"
+                      type="password"
+                      required
+                      className="appearance-none block w-full pl-10 px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                      value={confirmPassword}
+                      onChange={(newValue)=> setConfirmPassword(newValue.target.value)}
+                    />
+                  </div>
+                </div>
                 <div>
                   <label htmlFor="location.zipcode" className="block text-sm font-medium text-gray-700">
                     Zipcode
