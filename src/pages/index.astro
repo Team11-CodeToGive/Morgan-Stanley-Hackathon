@@ -1,8 +1,6 @@
 ---
-import Layout from '../layouts/Layout.astro';
----
+import { navigate } from "astro:transitions/client"
 
-<Layout title="Community Restoration Project">
-	<main>
-	</main>
-</Layout>
+navigate('/events')
+
+---

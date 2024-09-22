@@ -14,7 +14,7 @@ export default function Navbar() {
         <div className="flex justify-start">
           <div className="flex me-auto gap-6">
             <div>
-             <a href="#" className="flex items-center bg-white px-10 py-1 my-3 rounded ">
+             <a href="/" className="flex items-center bg-white px-10 py-1 my-3 rounded ">
                 <span className="font-semibold text-lg"><img className="h-12" src="/logo.png" alt="Community Restoration Project" /></span>
               </a>
             </div>
@@ -36,18 +36,19 @@ export default function Navbar() {
                 className="py-4 px-2  font-semibold transition duration-300"
               >
                 Community Hub
-              </a> <a
-                href="#"
+              </a>
+              {/* <a
+                href="https://www.communityrestorationproject.org/housing-assistance"
                 className="py-4 px-2  font-semibold transition duration-300"
               >
                 Programs
               </a>
               <a
-                href="/contact"
+                href="https://www.communityrestorationproject.org/contact"
                 className="py-4 px-2 font-semibold transition duration-300"
               >
                 Contact
-              </a>
+              </a> */}
             </div>
           </div>
           <div className='flex gap-6'>
