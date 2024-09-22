@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Menu, X, User2Icon } from 'lucide-react'
 
 export default function Navbar() {
@@ -14,7 +14,7 @@ export default function Navbar() {
         <div className="flex justify-start">
           <div className="flex me-auto gap-6">
             <div>
-             <a href="/" className="flex items-center bg-white px-10 py-1 my-3 rounded ">
+              <a href="/" className="flex items-center bg-white px-10 py-1 my-3 rounded ">
                 <span className="font-semibold text-lg"><img className="h-12" src="/logo.png" alt="Community Restoration Project" /></span>
               </a>
             </div>
@@ -51,9 +51,10 @@ export default function Navbar() {
               </a> */}
             </div>
           </div>
-          <div className='flex gap-6'>
+          <div className='flex gap-6 z-10'>
             <button className="lg:block border border-orange-200 hidden bg-accent hover:bg-orange-300 transition duration-100 my-auto px-6 py-2 text-white rounded-full">Donate</button>
-            <button className="lg:block hidden border-gray-200 border bg-white hover:bg-gray-300 transition duration-100 my-auto p-2 text-black rounded-full">{<User2Icon size={24} />}</button>
+            <button className="lg:block hidden border-gray-200 "><UserSettingsDropdown isLoggedIn={true} /></button>
+
           </div>
           <div className=" flex items-center">
             <button
@@ -76,3 +77,64 @@ export default function Navbar() {
     </nav>
   )
 }
+
+import { User, Settings, LogOut, LogIn } from 'lucide-react';
+
+
+const UserSettingsDropdown = ({ isLoggedIn }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const menuItems = [
+    { icon: User, label: 'Profile', onClick: () => console.log('Profile clicked') },
+    // { icon: Settings, label: 'Settings', onClick: () => console.log('Settings clicked') },
+    {
+      icon: isLoggedIn ? LogOut : LogIn,
+      label: isLoggedIn ? 'Logout' : 'Login',
+      onClick: () => console.log(isLoggedIn ? 'Logout clicked' : 'Login clicked'),
+    },
+  ];
+
+  return (
+    <div className="relative  text-black" ref={dropdownRef}>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="p-2 rounded-full shadow  bg-white focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+        aria-haspopup="true"
+        aria-expanded={isOpen}
+      >
+        <User className="h-6 w-6" />
+      </button>
+      {isOpen && (
+        <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 py-1">
+          {menuItems.map((item) => (
+            <button
+              key={item.label}
+              onClick={() => {
+                item.onClick();
+                setIsOpen(false);
+              }}
+              className="w-full text-left px-4 py-2 flex items-center space-x-2 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
+            >
+              <item.icon className="h-5 w-5 text-gray-500" />
+              <span>{item.label}</span>
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
