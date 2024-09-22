@@ -35,7 +35,7 @@ export default function EventCard({ event }) {
                 <span className="flex w-full gap-3">
                     <span className="flex me-auto text-sm text-gray-500 items-center">
                         <p className="me-5">{event.attendees?.length || 0}  / {event.capacity} Attendees: </p>
-                        {event.attendees && event.attendees.map((attendee, key) => <div className="flex -ml-3 shadow outline outline-2 items-center justify-center font-mono rounded-full bg-accent text-gray-100 w-7 h-7" key={key}><div>{attendee[0]}</div></div>)}
+                        {event.attendees && event.attendees.map((attendee, key) => <div className="flex -ml-3 shadow outline outline-2 items-center justify-center font-mono rounded-full bg-accent text-gray-100 w-7 h-7" key={key}><div>{attendee.user_info.name[0]}</div></div>)}
                     </span>
                     <button className=" bg-white p-2 outline outline-gray-100 rounded-full hover:shadow-lg transition duration-100">{<Share />}</button>
                     <button className="  bg-white p-2 outline outline-gray-100 rounded-full hover:shadow-lg transition duration-200">{<Bookmark />}</button>
