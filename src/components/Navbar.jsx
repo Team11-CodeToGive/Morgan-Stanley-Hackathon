@@ -53,7 +53,7 @@ export default function Navbar() {
           </div>
           <div className='flex gap-6 z-10'>
             <button className="lg:block border border-orange-200 hidden bg-accent hover:bg-orange-300 transition duration-100 my-auto px-6 py-2 text-white rounded-full">Donate</button>
-            <button className="lg:block hidden border-gray-200 "><UserSettingsDropdown isLoggedIn={true} /></button>
+            <div className="lg:block my-auto hidden"><UserSettingsDropdown isLoggedIn={true} /></div>
 
           </div>
           <div className=" flex items-center">
