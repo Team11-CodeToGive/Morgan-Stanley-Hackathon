@@ -51,38 +51,39 @@ let comments = [
     {name: "Rodney Edge", date: "Mar 12 2020", comment:"It was amazing I got to meet new folks and I love the car sharing feature!"},
     {name: "Karan Swansi", date: "Mar 12 2020", comment:"I feel blessed to be part of CRP. Highly recommend coming to our open houses if you haven’t come yet."},
 ]
-// <div class="w-fit pr-8 pl-4 py-4  gap-1 rounded-full bg-white">
-//                             <div class="w-14 h-14 rounded-full bg-black"></div>
-//                             <div class="flex flex-col text-sm">
-//                                 <p class="font-semibold text-gray-700">{hostName}</p>
-//                                 <p class="text-gray-400">{hostName}</p>
-//                             </div>
-//                         </div>
-// <div class="grid grid-cols-[1fr_minmax(100px,100px)_1fr] w-full h-full">
-//                         <img
-//                         src="/placeHolderImages/coffeeClubPlaceHolder.jpg"
-//                         alt="descriptive text"
-//                         width="100%"
-//                         height="100%"
-//                         class="object-cover row-span-4"
-//                         />
-//                     </div>
 ---
 
 <Layout title='Event Details'>
+    <!-- I completely forgot why we have two outer containers, but it works -->
     <main class="flex flex-col items-center h-full ">
         <div class="flex flex-col w-full max-w-[1100px] px-8 gap-16">
-            <div class="grid grid-cols-[minmax(250px,1000px)_minmax(300px,300px)] gap-8">
+            <!-- report button and hidden add to calendar button -->
+            <div class="flex gap-2 h-16 rounded-tl-lg fixed bottom-0 right-0 p-2">
+                <button class="md:hidden w-full p-3 text-sm rounded-md text-white bg-purple-500"> Add to Calendar </button>
+                <button class="aspect-square px-4 rounded-md bg-black"></button>
+            </div>
+
+            <div class="grid md:grid-cols-[minmax(250px,1000px)_minmax(300px,300px)] gap-8">
                 <div class="flex flex-col gap-14">
                     <!-- Thumbnail & images -->
-                    <div class="w-full h-full">
+                    <!-- note that I am using grid to overlap content -->
+                    <div class="grid w-full h-full 
+                    md:grid-cols-[minmax(300px,300px)_1fr]">
                         <img
                         src="/placeHolderImages/coffeeClubPlaceHolder.jpg"
                         alt="descriptive text"
                         width="100%"
                         height="100%"
-                        class="object-cover row-span-4"
+                        class="object-cover col-[1/-1] row-[1/2]"
                         />
+                        <div class="flex w-fit pr-8 pl-1 py-1 mb-2 ml-2
+                        gap-1 rounded-full bg-white col-[1/2] row-[1/2] self-end">
+                            <div class="w-14 h-14 rounded-full bg-black"></div>
+                            <div class="flex flex-col text-sm">
+                                <p class="font-semibold text-gray-700 text-xs">Hosted by</p>
+                                <p class="text-gray-400">{hostName}</p>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- event name and meeting Dates -->
@@ -112,7 +113,24 @@ let comments = [
                             financial workshops, meetings and provide resources to help underserved
                             communities. Join us on our journey to continue helping families thrive!
                         </p>
+
+                        <!-- extra details from "add to calendar" card. this becomes visible when md width breakpoint reached-->
+                        <!-- following div is used to hide its content on larger screen -->
+                        <div class="md:hidden">
+                        <br>
+                        <p class="text-sm text-gray-400">{meetingTimes[0].day}, {meetingTimes[0].date}</p>
+                        <p class="text-sm text-gray-400">{meetingTimes[0].time}</p>
+                        <p class="text-sm text-gray-400">{eventLocation}</p>
+                        <br>
+
+                        <img
+                        src="/placeHolderImages/mapPlaceholder.png"
+                        alt="descriptive text"
+                        class="object-cover max-w-96"
+                        />
+                        </div>
                     </section>
+
 
                     <!-- Attendees -->
                     <section>
@@ -142,9 +160,9 @@ let comments = [
                             {
                                 carpoolers.map((carpooler) =>
                                 <div class="flex gap-3 items-center">
-                                        <div class="w-5 h-5 rounded-full bg-black"></div>
-                                        <p class="text-gray-700">{carpooler.name}</p>
-                                    </div>
+                                    <div class="w-5 h-5 rounded-full bg-black"></div>
+                                    <p class="text-gray-700">{carpooler.name}</p>
+                                </div>
                                 )
                             }
                         </div>
@@ -152,8 +170,8 @@ let comments = [
                 </div>
 
 
-                <!-- column 2 -->
-                <div class="flex flex-col">
+                <!-- column 2 / add to calendar + address = map-->
+                <div class="md:flex md:flex-col hidden">
                     <!-- add to calendar + address = map-->
                     <article class="sticky top-5 w-full bg-white rounded-md shadow-sm">
                         <div class="p-5">
