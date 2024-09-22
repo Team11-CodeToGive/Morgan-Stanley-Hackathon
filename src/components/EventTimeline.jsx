@@ -2130,12 +2130,12 @@ export default function EventTimeline() {
 
     useEffect(() => {
         async function fetchAndSetDays() {
-          const fetchedDays = await fetchDays();
-          console.log(fetchedDays);
-          setDays(fetchedDays);
+            const fetchedDays = await fetchDays();
+            console.log(fetchedDays);
+            setDays(fetchedDays);
         }
         fetchAndSetDays();
-      }, []);
+    }, []);
 
 
     const [days, setDays] = useState(initDays);
@@ -2150,14 +2150,19 @@ export default function EventTimeline() {
                         <div className="border-b border-1 border-gray-300 mb-4"></div>
                         <div className="gap-8 grid p-5">
                             {day.events.map((event, key, { length }) => (
-                                <EventCard key={key} event={event}></EventCard>
+                                <>
+                                    <EventCard key={key} event={event}>
+                                    </EventCard>
+                                    {key + 1 != length && <div className="border-b border-1 border-gray-100"></div>}
+                                </>
                             ))}
+
                         </div>
                     </div>)
             }
         </div>
     )
-} {/* {key + 1 != length && <div className="border-b border-1 border-gray-100"></div>} */ }
+}
 
 async function fetchDays() {
     const requestOptions = {
