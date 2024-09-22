@@ -1,0 +1,247 @@
+---
+import {Image} from 'astro:assets';
+import Layout from '@/layouts/Layout.astro';
+
+const { eventId  } = Astro.params;
+
+let hostName = "Karan Swansi";
+let eventName = "Financial Workshop Open House";
+let eventLocation = "3726 E Main St, College Park, GA 30337";
+let recurringInfo = {
+    text: "Every week on Saturday",
+    until: ""
+}
+let attendees = [
+    {name: "Rodney Edge Sr.", role: "Organizer"},
+    {name: "Laura Loughin", role: "Organizer"},
+    {name: "Karan Swansi", role: "organizer"}
+]
+
+let carpoolers = [
+    {name: "Samantha A."},
+    {name: "Robert D."},
+    {name: "Luisana B."},
+    {name: "Emilia R."},
+    {name: "Jonathan A."},
+    {name: "Karan S."},
+    {name: "Marciano G."},
+    {name: "Cormac B."}
+]
+let meetingTimes = [
+    {day: "Saturday", date: "September 21, 2024", time: "5:00pm - 6:00pm", until: "October 6, 2024"},
+    {day: "Saturday", date: "September 21, 2024", time: "5:00pm - 6:00pm", until: "October 6, 2024"},
+    {day: "Saturday", date: "September 21, 2024", time: "5:00pm - 6:00pm", until: "October 6, 2024"}
+];
+let relatedEvents = [
+    {
+        name: "Motel to Home Resources",
+        description: "Learn about the programs we offer and see if you are eligible today!",
+    },
+    {
+        name: "Volunteering Opportunities",
+        description: "Participate in our fundraising events to support families and individuals thrive",
+    },
+    {
+        name: "Volunteering Opportunities",
+        description: "Participate in our fundraising events to support families and individuals thrive",
+    }
+]
+
+let comments = [
+    {name: "John Doberman", date: "Mar 12 2020", comment:"Great event! Felt supported and safe"},
+    {name: "Robert D.", date: "Mar 12 2020", comment:"I will recommend CRP to all my friends and family. You are changing lives thank you"},
+    {name: "Rodney Edge", date: "Mar 12 2020", comment:"It was amazing I got to meet new folks and I love the car sharing feature!"},
+    {name: "Karan Swansi", date: "Mar 12 2020", comment:"I feel blessed to be part of CRP. Highly recommend coming to our open houses if you haven’t come yet."},
+]
+---
+
+<Layout title='Event Details'>
+    <!-- I completely forgot why we have two outer containers, but it works -->
+    <main class="flex flex-col items-center h-full ">
+        <div class="flex flex-col w-full max-w-[1100px] px-8 gap-16">
+            <!-- report button and hidden add to calendar button -->
+            <div class="flex gap-2 h-16 rounded-tl-lg fixed bottom-0 right-0 p-2">
+                <button class="md:hidden w-full p-3 text-sm rounded-md text-white bg-purple-500"> Add to Calendar </button>
+                <button class="aspect-square px-4 rounded-md bg-black"></button>
+            </div>
+
+            <div class="grid md:grid-cols-[minmax(250px,1000px)_minmax(300px,300px)] gap-8">
+                <div class="flex flex-col gap-14">
+                    <!-- Thumbnail & images -->
+                    <!-- note that I am using grid to overlap content -->
+                    <div class="grid w-full h-full
+                    md:grid-cols-[minmax(300px,300px)_1fr]">
+                        <img
+                        src="/placeHolderImages/coffeeClubPlaceHolder.jpg"
+                        alt="descriptive text"
+                        width="100%"
+                        height="100%"
+                        class="object-cover col-[1/-1] row-[1/2]"
+                        />
+                        <div class="flex w-fit pr-8 pl-1 py-1 mb-2 ml-2
+                        gap-1 rounded-full bg-white col-[1/2] row-[1/2] self-end">
+                            <div class="w-14 h-14 rounded-full bg-black"></div>
+                            <div class="flex flex-col text-sm">
+                                <p class="font-semibold text-gray-700 text-xs">Hosted by</p>
+                                <p class="text-gray-400">{hostName}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- event name and meeting Dates -->
+                    <div class="flex flex-col gap-4">
+                        <header class="pt-5">
+                            <h1 class="text-3xl font-semibold text-gray-700">{eventName}</h1>
+                            <p class="text-sm text-gray-400 mt-2">{eventLocation}</p>
+                        </header>
+                        <!-- Meeting Dates -->
+                        <section class="flex flex-wrap w-full gap-2">
+                            {
+                                meetingTimes.map((meetingTime) =>
+                                <p class="bg-gray-100 w-fit px-6 py-2 rounded-full text-md text-purple-500 font-semibold">
+                                    SEP 21 @5PM
+                                </p>
+                                )
+                            }
+                        </section>
+                    </div>
+
+                    <!-- Details -->
+                    <section>
+                        <h2 class="font-semibold text-xl w-full text-gray-700"> Details</h2>
+                        <p class="text-sm text-gray-400">
+                            Here's a closer look of our recent open house for our new office space
+                            at College Park First United Methodist Church where we conduct our
+                            financial workshops, meetings and provide resources to help underserved
+                            communities. Join us on our journey to continue helping families thrive!
+                        </p>
+
+                        <!-- extra details from "add to calendar" card. this becomes visible when md width breakpoint reached-->
+                        <!-- following div is used to hide its content on larger screen -->
+                        <div class="md:hidden">
+                        <br>
+                        <p class="text-sm text-gray-400">{meetingTimes[0].day}, {meetingTimes[0].date}</p>
+                        <p class="text-sm text-gray-400">{meetingTimes[0].time}</p>
+                        <p class="text-sm text-gray-400">{eventLocation}</p>
+                        <br>
+
+                        <img
+                        src="/placeHolderImages/mapPlaceholder.png"
+                        alt="descriptive text"
+                        class="object-cover max-w-96"
+                        />
+                        </div>
+                    </section>
+
+
+                    <!-- Attendees -->
+                    <section>
+                        <h2 class="font-semibold text-xl mb-5 text-gray-700"> Attendees (11)</h2>
+                        <div class="flex flex-wrap gap-2">
+                            {
+                                attendees.map((attendee) =>
+                                <div class="flex w-fit pr-8 pl-4 py-4  gap-1 rounded-full shadow-sm bg-white">
+                                    <div class="w-14 h-14 rounded-full bg-black"></div>
+                                    <div class="flex flex-col text-sm">
+                                        <p class="font-semibold text-gray-700">{attendee.name}</p>
+                                        <p class="text-gray-400">{attendee.role}</p>
+                                    </div>
+                                </div>
+                                )
+                            }
+                        </div>
+                    </section>
+
+                    <!-- Contact Organizers -->
+                    <button class="bg-orange-400 w-fit px-5 py-3 rounded-full text-white text-sm"> Contact organizers</button>
+
+                    <!-- Need A ride -->
+                    <section>
+                        <h2 class="font-semibold text-xl pb-3 text-gray-700"> Need a ride? Contact who's carpooling</h2>
+                        <div class="flex flex-wrap gap-x-16 gap-y-4 content-center">
+                            {
+                                carpoolers.map((carpooler) =>
+                                <div class="flex gap-3 items-center">
+                                    <div class="w-5 h-5 rounded-full bg-black"></div>
+                                    <p class="text-gray-700">{carpooler.name}</p>
+                                </div>
+                                )
+                            }
+                        </div>
+                    </section>
+                </div>
+
+
+                <!-- column 2 / add to calendar + address = map-->
+                <div class="md:flex md:flex-col hidden">
+                    <!-- add to calendar + address = map-->
+                    <article class="sticky top-5 w-full bg-white rounded-md shadow-sm">
+                        <div class="p-5">
+                            <h2 class="font-semibold text-xl text-gray-700"> {eventName} </h2>
+                            <hr class="my-2"/>
+                            <p class="text-sm text-gray-400">{meetingTimes[0].day}, {meetingTimes[0].date}</p>
+                            <p class="text-sm text-gray-400">{meetingTimes[0].time}</p>
+                            <p class="text-sm text-gray-400">{eventLocation}</p>
+                        </div>
+                        <img
+                        src="/placeHolderImages/mapPlaceholder.png"
+                        alt="descriptive text"
+                        width="100%"
+                        height="100%"
+                        class="object-cover "
+                        />
+                        <div class="p-5">
+                            <button class="w-full py-3 text-sm rounded-full text-white bg-purple-500"> Add to Calendar </button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- People are also interested in (top margin is in gap property of parent) -->
+            <section>
+                <h2 class="font-semibold text-xl pb-3 text-gray-700">People are also interested in</h2>
+                <div class="grid grid-cols-3 gap-5">
+                    {
+                        relatedEvents.map((relatedEvent) =>
+                            <div class="flex flex-col rounded-lg relative
+                            duration-200 hover:shadow-[0_0_0_0.75rem_rgba(0_0_0_/_5%)] hover:bg-[rgb(0_0_0_/_5%)]
+                            focus-within:shadow-[0_0_0_0.75_rgba(0_0_0_/_5%)] focus-within:bg-[rgb(0_0_0_/_5%)]">
+
+                                <div class="w-full aspect-square bg-black mb-3 rounded-lg shadow-sm"> </div>
+                                <p class="font-semibold text-gray-700">{relatedEvent.name}</p>
+                                <p class="text-sm text-gray-400">{relatedEvent.description}</p>
+                                {/* I couldn't come up with this even if I tried.
+                                It is the pseudo-content trick: https://inclusive-components.design/cards/ */}
+                                <a class="after:absolute after:inset-0 focus:outline-none" href="/events"></a>
+                            </div>
+                        )
+                    }
+                </div>
+            </section>
+            <!-- Comment Section (top margin is in gap property of parent)-->
+            <section class="max-w-[600px]">
+                <h2 class="font-semibold text-xl mb-10 text-gray-700"> What is our Community Saying? </h2>
+                <div class="flex flex-col gap-11 w-full">
+                    {
+                        comments.map((comment) =>
+                            <div>
+                                <div class="flex gap-6">
+                                    <div class="w-14 h-14 rounded-full bg-black"></div>
+                                    <div >
+                                        <h4 class="font-semibold text-gray-700"> {comment.name}</h4>
+                                        <p class="text-gray-400 text-sm"> {comment.date}</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-400 text-sm mt-2"> {comment.comment}</p>
+                            </div>
+                        )
+                    }
+                </div>
+            </section>
+        </div>
+    </main>
+</Layout>
