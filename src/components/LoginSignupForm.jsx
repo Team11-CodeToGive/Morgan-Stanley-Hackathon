@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Mail, Lock, User, MapPin, Home, Building, AlertCircle, CheckCircle2 } from 'lucide-react';
-import Modal from './Modal';
 
 // Simple Alert component using Tailwind CSS and Lucide React icons
 const Alert = ({ variant = 'info', children }) => {
@@ -28,10 +27,6 @@ const LoginSignupForm = () => {
 
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
 
   const raw = JSON.stringify({
     "password": "Pranil@123",
@@ -119,15 +114,6 @@ const LoginSignupForm = () => {
   return (
     
     <div className=" flex flex-col justify-center mx-4">
-      <button 
-                onClick={openModal}
-                
-                className="bg-primary text-white px-4 py-2 rounded hover:bg-opacity-90"
-            >
-                Open Report Form
-            </button>
-
-            <Modal formType="event" isOpen={isModalOpen} onClose={closeModal} />
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
           {isLogin ? 'Sign in to your account' : 'Create a new account'}
