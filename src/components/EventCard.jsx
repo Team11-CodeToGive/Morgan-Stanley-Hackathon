@@ -1,11 +1,12 @@
 import { Bookmark, Share, } from "lucide-react"
 import { navigate } from 'astro:transitions/client';
 
-
 export default function EventCard({ event }) {
     return (
-        <div className="py-5 cursor-pointer hover:bg-gray-50 bg-gray-50 hover:outline-gray-200 rounded-lg hover:shadow outline outline-1 outline-gray-100 px-5"
-        onClick={()=>navigate('/event-details')}>
+        <div className="cursor-pointer rounded relative
+        duration-200 hover:shadow-[0_0_0_0.75rem_rgba(0_0_0_/_5%)] hover:bg-[rgb(0_0_0_/_5%)]
+        focus-within:shadow-[0_0_0_0.75rem_rgba(0_0_0_/_5%)] focus-within:bg-[rgb(0_0_0_/_5%)]"
+        >
             <div className="flex gap-4 ">
                 <span className="flex-col">
                     {/* <p>{event.thumbnail}</p> */}
@@ -13,8 +14,15 @@ export default function EventCard({ event }) {
                 </span>
                 <span className="flex-col flex gap-1 py-1">
                     {/* <div className="text-sm">{event.startDateTime} - {event.endDateTime} </div> */}
+                    
                     <div className="text-sm">{event.startDateTime} EST </div>
-                    <div className=" text-base font-semibold">{event.title}</div>
+                    <h4 className=" text-base font-semibold">
+                        {/* I couldn't come up with this even if I tried. 
+                        It is the pseudo-content trick: https://inclusive-components.design/cards/ */}
+                        <a class="after:absolute after:inset-0 focus:outline-none" href="/event-details">
+                        {event.title}
+                        </a>
+                    </h4>
                     <div className="text-sm">{event.location}</div>
                 </span>
 
