@@ -2,7 +2,7 @@ import { Bookmark, Share, } from "lucide-react"
 
 export default function EventCard({ event }) {
     return (
-        <div className="py-5 cursor-pointer hover:bg-gray-50 bg-gray-50 hover:outline-gray-200 rounded-lg hover:shadow outline outline-gray-100 px-5"
+        <div className="py-5 cursor-pointer hover:bg-gray-50 bg-gray-50 hover:outline-gray-200 rounded-lg hover:shadow outline outline-1 outline-gray-100 px-5"
         onClick={()=>document.location.href= '/event-details'}>
             <div className="flex gap-4 ">
                 <span className="flex-col">
