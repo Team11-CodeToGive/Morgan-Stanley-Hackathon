@@ -2,50 +2,121 @@
 import Layout from "../layouts/Layout.astro";
 import EventTimeline from "../components/EventTimeline";
 
-const events = [
-	{
-		thumbnail: "https://example.com/event1-thumbnail.jpg",
-		title: "Tech Conference 2024",
-		startDateTime: "2024-10-12T09:00:00",
-		endDateTime: "2024-10-12T17:00:00",
-		location: "San Francisco, CA",
-		attendees: ["John Doe", "Jane Smith", "Michael Brown"]
-	},
-	{
-		thumbnail: "https://example.com/event2-thumbnail.jpg",
-		title: "Art Expo",
-		startDateTime: "2024-11-05T10:00:00",
-		endDateTime: "2024-11-05T18:00:00",
-		location: "New York, NY",
-		attendees: ["Emily White", "Liam Johnson"]
-	},
-	{
-		thumbnail: "https://example.com/event3-thumbnail.jpg",
-		title: "Startup Pitch Night",
-		startDateTime: "2024-12-15T18:00:00",
-		endDateTime: "2024-12-15T21:00:00",
-		location: "Austin, TX",
-		attendees: []
-	},
-	{
-		thumbnail: "https://example.com/event4-thumbnail.jpg",
-		title: "Charity Run 2024",
-		startDateTime: "2024-09-20T07:00:00",
-		endDateTime: "2024-09-20T12:00:00",
-		location: "Los Angeles, CA",
-		attendees: [
-			"David Clark",
-			"Sophia Martinez",
-			"Olivia Garcia",
-			"James Wilson"
-		]
-	}
+const days = [
+    {
+        date: "2024-10-05",
+        events: [
+            {
+                thumbnail: "https://example.com/event5-thumbnail.jpg",
+                title: "Peachtree Art Expo",
+                startDateTime: "2024-10-05T10:00:00",
+                endDateTime: "2024-10-05T18:00:00",
+                location: "Atlanta, GA",
+                attendees: ["Emily White", "Liam Johnson"]
+            }
+        ]
+    },
+    {
+        date: "2024-10-12",
+        events: [
+            {
+                thumbnail: "https://example.com/event1-thumbnail.jpg",
+                title: "Atlanta Tech Conference 2024",
+                startDateTime: "2024-10-12T09:00:00",
+                endDateTime: "2024-10-12T17:00:00",
+                location: "Atlanta, GA",
+                attendees: ["John Doe", "Jane Smith", "Michael Brown"]
+            },
+            {
+                thumbnail: "https://example.com/event13-thumbnail.jpg",
+                title: "Downtown Music Festival",
+                startDateTime: "2024-10-12T18:00:00",
+                endDateTime: "2024-10-12T23:00:00",
+                location: "Atlanta, GA",
+                attendees: ["Music Lovers"]
+            }
+        ]
+    },
+    {
+        date: "2024-10-15",
+        events: [
+            {
+                thumbnail: "https://example.com/event6-thumbnail.jpg",
+                title: "Startup Pitch Night Atlanta",
+                startDateTime: "2024-10-15T18:00:00",
+                endDateTime: "2024-10-15T21:00:00",
+                location: "Atlanta, GA",
+                attendees: []
+            }
+        ]
+    },
+    {
+        date: "2024-10-20",
+        events: [
+            {
+                thumbnail: "https://example.com/event14-thumbnail.jpg",
+                title: "Atlanta Food Festival",
+                startDateTime: "2024-10-20T11:00:00",
+                endDateTime: "2024-10-20T20:00:00",
+                location: "Atlanta, GA",
+                attendees: ["Alex Green", "Maria Lopez"]
+            },
+            {
+                thumbnail: "https://example.com/event15-thumbnail.jpg",
+                title: "Autumn Craft Fair",
+                startDateTime: "2024-10-20T09:00:00",
+                endDateTime: "2024-10-20T17:00:00",
+                location: "Atlanta, GA",
+                attendees: ["Craft Enthusiasts"]
+            }
+        ]
+    },
+    {
+        date: "2024-10-25",
+        events: [
+            {
+                thumbnail: "https://example.com/event16-thumbnail.jpg",
+                title: "Halloween Costume Contest",
+                startDateTime: "2024-10-25T19:00:00",
+                endDateTime: "2024-10-25T23:00:00",
+                location: "Atlanta, GA",
+                attendees: ["Costume Lovers"]
+            }
+        ]
+    },
+    {
+        date: "2024-10-31",
+        events: [
+            {
+                thumbnail: "https://example.com/event17-thumbnail.jpg",
+                title: "Trick or Treat Downtown",
+                startDateTime: "2024-10-31T17:00:00",
+                endDateTime: "2024-10-31T20:00:00",
+                location: "Atlanta, GA",
+                attendees: ["Families"]
+            },
+            {
+                thumbnail: "https://example.com/event18-thumbnail.jpg",
+                title: "Halloween Night Party",
+                startDateTime: "2024-10-31T21:00:00",
+                endDateTime: "2024-11-01T02:00:00",
+                location: "Atlanta, GA",
+                attendees: ["Party Goers"]
+            }
+        ]
+    }
 ];
+
+const testBoxes = Array(20).fill(null);
 ---
 
 <Layout title="Events">
-	<main class="py-5">
-		<h1 class=" text-center text-lg pb-5">Events</h1>
-		<EventTimeline events={events} />
+	<main class="px-8">
+		<div class="flex flex-row sm:gap-10 gap-4 mx-auto justify-center">
+			<div class="w-20 sm:w-60 hidden sm:grid gap-1">
+				{testBoxes.map((el)=>(<div class="bg-gray-200"></div>))}
+			</div>
+			<EventTimeline client:only days={days} />
+		</div>
 	</main>
 </Layout>
