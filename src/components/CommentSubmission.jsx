@@ -27,7 +27,7 @@ export default function CommentSubmission({ eventId }) {
         };
 
         try {
-            const response = await fetch('https://PranilIngle.pythonanywhere.com/comments/createComment', requestOptions);
+            const response = await fetch('https://my-project-1547014036843.uc.r.appspot.com/comments/createComment', requestOptions);
 
             if (response.ok) {
                 setSuccessMessage('Comment submitted successfully!');

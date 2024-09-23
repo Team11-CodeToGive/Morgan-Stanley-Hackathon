@@ -80,8 +80,8 @@ const LoginSignupForm = () => {
     }
 
     const url = isLogin
-      ? 'https://PranilIngle.pythonanywhere.com/users/login'
-      : 'https://PranilIngle.pythonanywhere.com/users/create';
+      ? 'https://my-project-1547014036843.uc.r.appspot.com/users/login'
+      : 'https://my-project-1547014036843.uc.r.appspot.com/users/create';
 
     const bodyData = isLogin
       ? { email: formData.email, password: formData.password }

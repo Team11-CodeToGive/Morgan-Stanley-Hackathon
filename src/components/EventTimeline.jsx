@@ -2181,7 +2181,7 @@ async function fetchDays() {
         redirect: "follow"
     };
 
-    const res = await fetch("https://PranilIngle.pythonanywhere.com/event/", requestOptions)
+    const res = await fetch("https://my-project-1547014036843.uc.r.appspot.com/event/", requestOptions)
     const data = await res.json()
 
     return data;

@@ -8,7 +8,7 @@ const AttendCard = ({ eventId }) => {
     useEffect(() => {
         async function fetchEventData() {
             try {
-                const response = await fetch(`https://PranilIngle.pythonanywhere.com/event/${eventId}`);
+                const response = await fetch(`https://my-project-1547014036843.uc.r.appspot.com/event/${eventId}`);
                 const data = await response.json();
                 setEventData(data);
             } catch (error) {
@@ -18,6 +18,10 @@ const AttendCard = ({ eventId }) => {
         fetchEventData();
     }, [eventId]);
 
+    const handleCreateFlyer = () => {
+        const url = `https://my-project-1547014036843.uc.r.appspot.com/createFlyer/${eventId}`; // Replace with your desired URL
+        window.open(url, '_blank'); // Opens the URL in a new tab
+    };
     const handleAttendance = () => {
         setIsAttending((prev) => !prev);
         if (addedToCalendar) {
@@ -49,6 +53,14 @@ const AttendCard = ({ eventId }) => {
                 height="100%"
                 className="object-cover"
             />
+            <div className="px-5 pt-5">
+                <button
+                    className="w-full p-3 text-sm rounded-full text-white bg-purple-800"
+                    onClick={handleCreateFlyer}
+                >
+                    Generate Flyer
+                </button>
+            </div>
             <div className="px-5 pt-5">
                 <button
                     className={isAttending
@@ -94,6 +106,14 @@ const AttendCard = ({ eventId }) => {
                     height="100%"
                     className="object-cover"
                 />
+                <div className="px-5 pt-5">
+                <button
+                    className="w-full p-3 text-sm rounded-full text-white bg-purple-800"
+                    onClick={handleCreateFlyer}
+                >
+                    Generate Flyer
+                </button>
+            </div>
                 <div className="px-5 pt-5">
                     <button
                         className={isAttending

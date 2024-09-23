@@ -55,7 +55,7 @@ const ReportForm = ({onClose}) => {
             if (formData.imgFile) {
                 dataToSend.append('file', formData.imgFile); // Append the image file
             }
-            const response = await fetch('https://PranilIngle.pythonanywhere.com/image_upload/uploadImage', {
+            const response = await fetch('https://my-project-1547014036843.uc.r.appspot.com/image_upload/uploadImage', {
                 method: 'POST',
                 body: dataToSend,
             });
@@ -77,7 +77,7 @@ const ReportForm = ({onClose}) => {
         };
 
         try {
-            const response = await fetch('https://PranilIngle.pythonanywhere.com/report/createIssueReport', {
+            const response = await fetch('https://my-project-1547014036843.uc.r.appspot.com/report/createIssueReport', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
