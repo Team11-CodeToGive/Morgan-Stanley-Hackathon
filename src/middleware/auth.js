@@ -1,3 +1,4 @@
+import { isLoggedIn } from '../utils/userUtils.js';
 
 export const onRequest = async ({ request, redirect, locals }, next) => {
   const url = new URL(request.url);
@@ -10,7 +11,7 @@ export const onRequest = async ({ request, redirect, locals }, next) => {
     return redirect('/events');
 
   // Allow public routes to be accessed without checking the login cookie
-  if ( publicRoutes.some(route => pathname.startsWith(route)))
+  if (publicRoutes.some(route => pathname == route))
     return next();
 
   const cookieHeader = request.headers.get('cookie');

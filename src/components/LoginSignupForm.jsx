@@ -108,7 +108,8 @@ const LoginSignupForm = () => {
       if (isLogin) {
         Cookies.set('email', data.email, { expires: 7 });
         Cookies.set('password', data.password, { expires: 7 });
-        Cookies.set('user', data.user, { expires: 7 });
+        Cookies.set('user', data.user_id, { expires: 7 });
+        Cookies.set('name', data.name, { expires: 7 });
         navigate('/events');
       } else {
         setIsLogin(true);
