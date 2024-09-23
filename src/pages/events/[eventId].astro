@@ -3,6 +3,10 @@ import { Image } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
 import CommentSection from "@/components/CommentSection";
 import CommentSubmission from "@/components/CommentSubmission";
+import EventAttendCard from "@/components/EventAttendCard";
+import EventDetailsSection from "@/components/EventDetailsSection";
+import EventImages from "@/components/EventImages";
+import EventPeopleSection from "@/components/EventPeopleSection";
 
 const { eventId } = Astro.params;
 
@@ -18,7 +22,6 @@ let attendees = [
 	{ name: "Laura Loughin", role: "Organizer" },
 	{ name: "Karan Swansi", role: "organizer" }
 ];
-
 let carpoolers = [
 	{ name: "Samantha A." },
 	{ name: "Robert D." },
@@ -66,7 +69,6 @@ let relatedEvents = [
 			"Participate in our fundraising events to support families and individuals thrive"
 	}
 ];
-
 let comments = [
 	{
 		name: "John Doberman",
@@ -115,182 +117,17 @@ const eventDetails = 0;
 				class="grid md:grid-cols-[minmax(250px,1000px)_minmax(300px,300px)] gap-8"
 			>
 				<div class="flex flex-col gap-14">
-					<!-- Thumbnail & images -->
-					<!-- note that I am using grid to overlap content -->
-					<div
-						class="grid w-full h-full
-                    md:grid-cols-[minmax(300px,300px)_1fr]"
-					>
-						<img
-							src="/placeHolderImages/coffeeClubPlaceHolder.jpg"
-							alt="descriptive text"
-							width="100%"
-							height="100%"
-							class="object-cover col-[1/-1] row-[1/2]"
-						/>
-						<div
-							class="flex w-fit pr-8 pl-1 py-1 mb-2 ml-2
-                        gap-1 rounded-full bg-white col-[1/2] row-[1/2] self-end"
-						>
-							<div class="w-14 h-14 rounded-full bg-black"></div>
-							<div class="flex flex-col text-sm">
-								<p class="font-semibold text-gray-700 text-xs">
-									Hosted by
-								</p>
-								<p class="text-gray-400">{hostName}</p>
-							</div>
-						</div>
-					</div>
+					<EventImages eventId={eventId} client:only="react" />
 
-					<!-- event name and meeting Dates -->
-					<div class="flex flex-col gap-4">
-						<header class="pt-5">
-							<h1 class="text-3xl font-semibold text-gray-700">
-								{eventName}
-							</h1>
-							<p class="text-sm text-gray-400 mt-2">
-								{eventLocation}
-							</p>
-						</header>
-						<!-- Meeting Dates -->
-						<section class="flex flex-wrap w-full gap-2">
-							{
-								meetingTimes.map((meetingTime) => (
-									<p class="bg-gray-100 w-fit px-6 py-2 rounded-full text-md text-purple-500 font-semibold">
-										SEP 21 @5PM
-									</p>
-								))
-							}
-						</section>
-					</div>
+					<EventDetailsSection
+						eventId={eventId}
+						client:only="react"
+					/>
 
-					<!-- Details -->
-					<section>
-						<h2 class="font-semibold text-xl w-full text-gray-700">
-							Details
-						</h2>
-						<p class="text-sm text-gray-400">
-							Here's a closer look of our recent open house for
-							our new office space at College Park First United
-							Methodist Church where we conduct our financial
-							workshops, meetings and provide resources to help
-							underserved communities. Join us on our journey to
-							continue helping families thrive!
-						</p>
-
-						<!-- following div is used to hide its content on larger screen -->
-						<div class="md:hidden">
-							<br />
-							<p class="text-sm text-gray-400">
-								{meetingTimes[0].day}, {meetingTimes[0].date}
-							</p>
-							<p class="text-sm text-gray-400">
-								{meetingTimes[0].time}
-							</p>
-							<p class="text-sm text-gray-400">{eventLocation}</p>
-							<br />
-
-							<img
-								src="/placeHolderImages/mapPlaceholder.png"
-								alt="descriptive text"
-								class="object-cover max-w-96"
-							/>
-						</div>
-					</section>
-
-					<!-- Attendees -->
-					<section>
-						<h2 class="font-semibold text-xl mb-5 text-gray-700">
-							Attendees (11)
-						</h2>
-						<div class="flex flex-wrap gap-2">
-							{
-								attendees.map((attendee) => (
-									<div class="flex w-fit pr-8 pl-4 py-4  gap-1 rounded-full shadow-sm bg-white">
-										<div class="w-14 h-14 rounded-full bg-black" />
-										<div class="flex flex-col text-sm">
-											<p class="font-semibold text-gray-700">
-												{attendee.name}
-											</p>
-											<p class="text-gray-400">
-												{attendee.role}
-											</p>
-										</div>
-									</div>
-								))
-							}
-						</div>
-					</section>
-
-					<!-- Contact Organizers -->
-					<button
-						class="bg-orange-400 w-fit px-5 py-3 rounded-full text-white text-sm"
-					>
-						Contact organizers</button
-					>
-
-					<!-- Need A ride -->
-					<section>
-						<h2 class="font-semibold text-xl pb-3 text-gray-700">
-							Need a ride? Contact who's carpooling
-						</h2>
-						<div
-							class="flex flex-wrap gap-x-16 gap-y-4 content-center"
-						>
-							{
-								carpoolers.map((carpooler) => (
-									<div class="flex gap-3 items-center">
-										<div class="w-5 h-5 rounded-full bg-black" />
-										<p class="text-gray-700">
-											{carpooler.name}
-										</p>
-									</div>
-								))
-							}
-						</div>
-					</section>
+					<EventPeopleSection eventId={eventId} client:only="react" />
 				</div>
-
+				<EventAttendCard eventId={eventId} client:only="react" />
 				<!-- column 2 / add to calendar + address = map-->
-				<div class="md:flex md:flex-col hidden">
-					<!-- add to calendar + address = map-->
-					<article
-						class="sticky top-5 w-full bg-white rounded-md shadow-sm"
-					>
-						<div class="p-5">
-							<h2 class="font-semibold text-xl text-gray-700">
-								{eventName}
-							</h2>
-							<hr class="my-2" />
-							<p class="text-sm text-gray-400">
-								{meetingTimes[0].day}, {meetingTimes[0].date}
-							</p>
-							<p class="text-sm text-gray-400">
-								{meetingTimes[0].time}
-							</p>
-							<p class="text-sm text-gray-400">{eventLocation}</p>
-						</div>
-						<img
-							src="/placeHolderImages/mapPlaceholder.png"
-							alt="descriptive text"
-							width="100%"
-							height="100%"
-							class="object-cover"
-						/>
-						<div class="p-5 grid gap-5">
-							<button
-								class="w-full py-3 text-sm rounded-full text-white bg-accent"
-							>
-								Attend
-							</button>
-							<button
-								class="w-full py-3 text-sm rounded-full text-white bg-purple-500"
-							>
-								Add to Calendar
-							</button>
-						</div>
-					</article>
-				</div>
 			</div>
 
 			<!-- People are also interested in (top margin is in gap property of parent) -->

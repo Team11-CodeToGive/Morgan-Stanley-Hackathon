@@ -1,11 +1,12 @@
 import { User, Settings, LogOut, LogIn } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import { login, logout, getUserName } from '../utils/userUtils';
+import { login, logout, getUserName, isLoggedIn } from '../utils/userUtils';
 import { navigate } from 'astro:transitions/client';
 
-export default function UserSettingsDropdown({ isLoggedIn }) {
+export default function UserSettingsDropdown() {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
+
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -39,8 +40,8 @@ export default function UserSettingsDropdown({ isLoggedIn }) {
                 aria-haspopup="true"
                 aria-expanded={isOpen}
             >
-                   <span >{getUserName()[0].toUpperCase() + getUserName().slice(1)}</span>
-                   <User className="h-6 w-6 shadow rounded-full p-1 outline-1 outline-gray-300" />
+                <span >{isLoggedIn && getUserName()[0].toUpperCase() + getUserName().slice(1)}</span>
+                <User className="h-6 w-6 shadow rounded-full p-1 outline-1 outline-gray-300" />
             </button>
             {isOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 py-1 z-50">

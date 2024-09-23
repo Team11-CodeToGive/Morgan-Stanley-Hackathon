@@ -7,7 +7,7 @@ export default function EventCard({ event }) {
     const eventId = event.event_id;
     const eventIdPath = `/events/${eventId}`;
 
-    const [bookmarked, setBookmarked] = useState(true);
+    const [bookmarked, setBookmarked] = useState(false);
 
     async function handleToggleBookmark() {
         setBookmarked(!bookmarked);
@@ -23,8 +23,11 @@ export default function EventCard({ event }) {
         >
             <div className="flex gap-4  ">
                 <span className="flex-col">
-                    {/* <p>{event.thumbnail}</p> */}
-                    <div className="h-20 w-36 rounded bg-gray-200"></div>
+                    {event.image_url && < img src={event.image_url} // Replace with the actual image URL from your data
+                        alt="Event Thumbnail"
+                        className="h-20 w-36 rounded object-cover bg-gray-200"
+                    />}
+                    {!event.image_url && <div className="h-20 w-36 rounded bg-gray-200"></div>}
                 </span>
                 <span className="flex-col flex gap-1 py-1">
                     <div className="text-sm">{toUserFriendlyTimeFormat(event.start_datetime)} EST </div>

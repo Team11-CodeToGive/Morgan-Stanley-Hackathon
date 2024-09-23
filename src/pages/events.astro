@@ -1,17 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import EventTimeline from "../components/EventTimeline";
-
-const testBoxes = Array(20).fill(null);
+import CommunityList from "../components/CommunityList";
 ---
 
 <Layout title="Events">
 	<main class="px-8">
 		<div class="flex flex-row sm:gap-10 gap-4 mx-auto justify-center">
-			<!-- <div class="w-20 sm:w-60 hidden sm:grid gap-1">
-				{testBoxes.map((el)=>(<div class="bg-gray-200"></div>))}
-			</div> -->
-			<EventTimeline client:only="react" />
+			<span class=" w-1/5 hidden md:block">
+				<CommunityList client:only="react" />
+			</span>
+			<span class="md:w-4/5 ">
+				<EventTimeline client:only="react" />
+			</spanfle>
 		</div>
 	</main>
 </Layout>
