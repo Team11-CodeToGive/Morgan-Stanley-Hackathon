@@ -78,7 +78,7 @@ const EventForm = ({ onClose }) => {
                 const imageData = new FormData();
                 imageData.append('file', formData.imgFile); // Append the image file
 
-                const imageResponse = await fetch('https://PranilIngle.pythonanywhere.com/image_upload/uploadImage', {
+                const imageResponse = await fetch('https://my-project-1547014036843.uc.r.appspot.com/image_upload/uploadImage', {
                     method: 'POST',
                     body: imageData,
                 });
@@ -109,7 +109,7 @@ const EventForm = ({ onClose }) => {
             };
 
             // Step 3: Submit the event details
-            const eventResponse = await fetch('https://PranilIngle.pythonanywhere.com/event/create', {
+            const eventResponse = await fetch('https://my-project-1547014036843.uc.r.appspot.com/event/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

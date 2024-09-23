@@ -87,7 +87,7 @@ async function fetchCommunities() {
         redirect: "follow"
     };
 
-    const res = await fetch("https://PranilIngle.pythonanywhere.com/community", requestOptions);
+    const res = await fetch("https://my-project-1547014036843.uc.r.appspot.com/community", requestOptions);
     const data = await res.json();
     return data;
 }

@@ -7,7 +7,7 @@ const EventPeopleSection = ({ eventId }) => {
     useEffect(() => {
         async function fetchEventData() {
             try {
-                const response = await fetch(`https://PranilIngle.pythonanywhere.com/event/${eventId}`);
+                const response = await fetch(`https://my-project-1547014036843.uc.r.appspot.com/event/${eventId}`);
                 const data = await response.json();
                 setEventData(data);
 

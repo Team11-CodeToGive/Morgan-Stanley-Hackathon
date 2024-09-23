@@ -74,7 +74,7 @@ async function fetchComments(eventId) {
     };
     console.log(eventId)
 
-    const res = await fetch(`https://PranilIngle.pythonanywhere.com/comments/${eventId}`, requestOptions)
+    const res = await fetch(`https://my-project-1547014036843.uc.r.appspot.com/comments/${eventId}`, requestOptions)
     const data = await res.json()
 
     // console.log(data)
