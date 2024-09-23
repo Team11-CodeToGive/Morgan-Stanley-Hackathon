@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import FormInputField from './FormInputField';
 import SearchableDropdown from './SearchableDropdown';
 
@@ -49,7 +49,7 @@ const ReportForm = ({onClose}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true); 
+        setLoading(true);
         try {
             const dataToSend = new FormData();
             if (formData.imgFile) {
@@ -101,11 +101,11 @@ const ReportForm = ({onClose}) => {
         }finally{
                 setLoading(false); // Stop loading when the process finishes
         }
-        
+
     };
 
     return (
-        <form onSubmit={handleSubmit} className="bg-white p-4 sm:p-6 rounded-lg shadow-md max-w-full font-semibold" >
+        <form onSubmit={handleSubmit} className="bg-white " >
             <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4 sm:mb-6">Report Form</h2>
 
             <FormInputField

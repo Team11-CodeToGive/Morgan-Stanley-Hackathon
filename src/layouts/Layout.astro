@@ -2,6 +2,7 @@
 import Navbar from "@/components/Navbar.jsx";
 import Footer from "@/components/Footer.astro";
 import { ViewTransitions } from 'astro:transitions';
+import FloatingReportButton from "@/components/FloatingReportButton.jsx";
 
 
 interface Props {
@@ -51,6 +52,7 @@ const { title,} = Astro.props;
 		<span transition:persist>
 			<Footer/>
 		</span>
+		<FloatingReportButton client:only='react' />
 	</body>
 </html>
 <ViewTransitions />

@@ -52,9 +52,9 @@ export default function Navbar() {
               </a> */}
             </div>
           </div>
-          <div className='flex gap-6 z-10'>
+          <div className='flex gap-6 '>
             <button className="md:block border border-orange-200 hidden bg-accent hover:bg-orange-300 transition duration-100 my-auto px-6 py-2 text-white rounded-full">Donate</button>
-            <div className="md:block my-auto hidden"><UserSettingsDropdown isLoggedIn={true} /></div>
+            <div className="md:flex my-auto hidden bg-white text-black rounded-full"><UserSettingsDropdown isLoggedIn={true} /></div>
 
           </div>
           <div className=" flex items-center">

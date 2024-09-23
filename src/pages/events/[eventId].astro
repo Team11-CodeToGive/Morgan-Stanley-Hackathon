@@ -107,9 +107,8 @@ const eventDetails = 0;
 				<button
 					class="md:hidden w-full p-3 text-sm rounded-md text-white bg-purple-500"
 				>
-					Add to Calendar
+					Attend
 				</button>
-				<button class="aspect-square px-4 rounded-md bg-black"></button>
 			</div>
 
 			<div
@@ -278,7 +277,12 @@ const eventDetails = 0;
 							height="100%"
 							class="object-cover"
 						/>
-						<div class="p-5">
+						<div class="p-5 grid gap-5">
+							<button
+								class="w-full py-3 text-sm rounded-full text-white bg-accent"
+							>
+								Attend
+							</button>
 							<button
 								class="w-full py-3 text-sm rounded-full text-white bg-purple-500"
 							>
@@ -354,12 +358,13 @@ const eventDetails = 0;
 				</div>
 			</section> -->
 			<section class="w-full">
-                <h2 class="font-semibold text-xl mb-10 text-gray-700">
-                    What is our Community Saying?</h2>
-                <span class="grid gap-8">
-                    <CommentSubmission eventId={eventId} client:only="react" />
-                                    <CommentSection eventId = {eventId} client:only="react" />
-                </span>
+				<h2 class="font-semibold text-xl mb-10 text-gray-700">
+					What is our Community Saying?
+				</h2>
+				<span class="grid gap-8">
+					<CommentSubmission eventId={eventId} client:only="react" />
+					<CommentSection eventId={eventId} client:only="react" />
+				</span>
 			</section>
 		</div>
 	</main>

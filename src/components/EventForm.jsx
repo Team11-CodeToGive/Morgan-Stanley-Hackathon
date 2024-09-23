@@ -132,7 +132,7 @@ const EventForm = ({ onClose }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="bg-white p-4 sm:p-6 rounded-lg shadow-md max-w-full font-semibold">
+        <form onSubmit={handleSubmit} className="bg-white z-50">
             <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4 sm:mb-6">Event Form</h2>
 
             <FormInputField

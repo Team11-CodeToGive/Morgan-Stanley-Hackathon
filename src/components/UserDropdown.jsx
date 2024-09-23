@@ -1,6 +1,6 @@
 import { User, Settings, LogOut, LogIn } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import { login, logout } from '../utils/userUtils';
+import { login, logout, getUserName } from '../utils/userUtils';
 import { navigate } from 'astro:transitions/client';
 
 export default function UserSettingsDropdown({ isLoggedIn }) {
@@ -35,14 +35,15 @@ export default function UserSettingsDropdown({ isLoggedIn }) {
         <div className="relative  text-black" ref={dropdownRef}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-full shadow  bg-white focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+                className="p-2 px-4 flex gap-1 rounded-full shadow  bg-white focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
                 aria-haspopup="true"
                 aria-expanded={isOpen}
             >
-                <User className="h-6 w-6" />
+                   <span >{getUserName()[0].toUpperCase() + getUserName().slice(1)}</span>
+                   <User className="h-6 w-6 shadow rounded-full p-1 outline-1 outline-gray-300" />
             </button>
             {isOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 py-1">
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 py-1 z-50">
                     {menuItems.map((item) => (
                         <button
                             key={item.label}
