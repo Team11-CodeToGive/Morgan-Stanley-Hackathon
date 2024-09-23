@@ -25,9 +25,9 @@ export default function UserSettingsDropdown() {
         { icon: User, label: 'Profile', onClick: () => console.log('Profile clicked') },
         // { icon: Settings, label: 'Settings', onClick: () => console.log('Settings clicked') },
         {
-            icon: isLoggedIn ? LogOut : LogIn,
-            label: isLoggedIn ? 'Logout' : 'Login',
-            onClick: () => isLoggedIn ? logout() : navigate('/')
+            icon: isLoggedIn() ? LogOut : LogIn,
+            label: isLoggedIn() ? 'Logout' : 'Login',
+            onClick: () => isLoggedIn() ? logout() : navigate('/')
             ,
         },
     ];
@@ -40,7 +40,7 @@ export default function UserSettingsDropdown() {
                 aria-haspopup="true"
                 aria-expanded={isOpen}
             >
-                <span >{isLoggedIn && getUserName()[0].toUpperCase() + getUserName().slice(1)}</span>
+                <span >{isLoggedIn() && getUserName()[0].toUpperCase() + getUserName().slice(1)}</span>
                 <User className="h-6 w-6 shadow rounded-full p-1 outline-1 outline-gray-300" />
             </button>
             {isOpen && (
